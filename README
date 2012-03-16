@@ -1,1 +1,15 @@
-Simple but useful scripts, without a project
+Simple but useful scripts, without a project.
+
+Short Description of the Scripts:
+
+- brokenLinks:
+Follow all links on the Website and check if they return HTTP-Statuscode 200
+
+- email_protection:
+Search email adresses and protect it with javascript
+
+- matrix:
+Display text on Webseite like an commandline. (Originalcode from Wordpress Easteregg)
+
+- playlist2cd:
+Burn the mp3 files from an .m3u file (with absolut path) to audio cd. Require: lame & wodim
