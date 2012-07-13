@@ -24,7 +24,7 @@ function protectEmail($html)
 				(
 					[[:punct:]]||\s|<|$
 				) # trailing text
-			/x';
+			/ix';
 	
 	return preg_replace_callback($regexp, function($matched) {
 		list($all, $before, $address, $after) = $matched;
@@ -32,7 +32,13 @@ function protectEmail($html)
 		// already linked
 		if (preg_match('/<a\s/i', $before))
 		{
-			return preg_replace_callback("/[a-z]+[a-z0-9\-\.\_]+?@[a-z0-9\-\.]+[a-z]{2,6}/x", function($matches){return base64_encode($matches[0]);}, $all);
+			return preg_replace_callback("/[a-z]+[a-z0-9\-\.\_]+?@[a-z0-9\-\.]+[a-z]{2,6}/ix", function($matches){return base64_encode($matches[0]);}, $all);
+		}
+		
+		//If input field
+		if(preg_match('/[A-Z]/i', $before))
+		{
+			return $all;
 		}
 		
 		$at_character	= array("at", "ät", "[at]", "[ät]", "{at}", "{ät}",);
